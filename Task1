@@ -1,0 +1,18 @@
+crontab -e 
+--------
+0 0 15 ? * * /bin/sh /home/ec2-user/test.sh 
+
+
+Task 1: test.sh
+-------
+mkdir testrepo
+git init
+cd testrepo
+
+git clone https://github.com/mihirgithub/test.git
+
+today=`date '+%d%m%Y'`;
+filename="mytest_$today.txt"
+git log -5 --name-only --oneline develop > $filename
+
+rm -rf .git
